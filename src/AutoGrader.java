@@ -5,15 +5,24 @@ public class AutoGrader {
 
     public static void main(String[] args) throws IOException {
 
-        File keyFile = new File("C:\\Users\\Welcome\\IdeaProjects\\CS UIL Programming Practice\\CS_UIL Examples\\src\\key.in");
-        File answersFile = new File("C:\\Users\\Welcome\\IdeaProjects\\CS UIL Programming Practice\\CS_UIL Examples\\src\\answers.in");
-        File resultsFile = new File("C:\\Users\\Welcome\\IdeaProjects\\CS UIL Programming Practice\\CS_UIL Examples\\src\\results.out");
+        String answersFileString = "C:\\Users\\Welcome\\IdeaProjects\\AutoGrader\\textFiles\\2019_district_answers.in";
+        String keyFileString = "C:\\Users\\Welcome\\IdeaProjects\\AutoGrader\\textFiles\\2019_district_key.in";
+
+        File keyFile = new File(keyFileString);
+        File answersFile = new File(answersFileString);
+        File resultsFile = new File("C:\\Users\\Welcome\\IdeaProjects\\AutoGrader\\src\\results.out");
 
         String[] key = new String[40];
         String[] answers = new String[40];
 
         PrintWriter out = new PrintWriter(resultsFile);
         Scanner in = new Scanner(keyFile);
+
+        if(!in.hasNext()) {
+            System.out.println("input files are empty");
+            System.exit(0);
+        }
+
         for(int i=0; i<40; i++) {
             String temp = in.next();
             if(temp.matches("\\d+[)]")) {
@@ -35,6 +44,7 @@ public class AutoGrader {
         }
         int correct = 0;
         int incorrect = 0;
+        int skipped = 0;
         out.println("   Answer:\tKey:");
         for(int i=0; i<40; i++) {
             String matchSymbol = "";
@@ -43,6 +53,7 @@ public class AutoGrader {
                 correct++;
             } else if(answers[i].equals("--")) {
                 matchSymbol = "  S   ";
+                skipped++;
             } else {
                 matchSymbol = "   X   ";
                 incorrect++;
@@ -52,9 +63,10 @@ public class AutoGrader {
 
         out.println("\nCorrect: " + correct);
         out.println("Incorrect: " + incorrect);
+        out.println("Skipped: " + skipped);
         out.println("Score: " + (correct*6-incorrect*2));
 
-        System.out.println("View results in \"results.out\"");
+        System.out.println("View results in " + resultsFile.getAbsolutePath());
 
         in.close();
         out.close();

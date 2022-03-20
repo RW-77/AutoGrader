@@ -1,0 +1,40 @@
+1. B
+2. B
+3. D
+4. A
+5. E
+6. D
+7. B
+8. E
+9. A
+10. B
+11. C
+12. D
+13. C (&, |)
+14. -- (trivia)
+15. B
+16. B
+17. -- (.matches(regex))
+18. C
+19. E
+20. D
+21. B
+22. E
+23. B
+24. -- (time)
+25. B
+26. D
+27. A
+28. B
+29. E * (Integer.toString(16, 2)
+30. B
+31. D
+32. C
+33. -- (switch)
+34. A
+35. E
+36. D * (Generics)
+37. -- * (8-bit two's complement binary equivalent)
+38. -- * (boolean notation)
+39. -- * (#vertices in graph)
+40. -- * (logic gates)
